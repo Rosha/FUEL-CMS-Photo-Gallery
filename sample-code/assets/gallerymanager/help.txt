@@ -1,0 +1,5 @@
+// JB WEB SERVICES
+// www.jbwebservices.com
+// 11/12/2014
+
+The script should fill this folder with sub galleries. The pictures will go in those folders when uploaded through the backend.
