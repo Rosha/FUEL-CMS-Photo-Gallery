@@ -5,4 +5,4 @@ Fuel CMS - Photo Gallery Manager - upload, edit, crop and manage photos. With ph
 
 Sample Gallery: http://www.chestnutstrand.com/photogallery
 
-![Alt text](http://www.jbwebservices.com/fuel-cms-photo-gallery-manager.jpg "Admin Photo Gallery Manager")
+![Alt text](http://www.jbwebservices.com/fuel-cms/fuel-cms-photo-gallery-manager.jpg "Admin Photo Gallery Manager")
