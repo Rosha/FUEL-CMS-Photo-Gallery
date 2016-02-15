@@ -37,7 +37,7 @@
         ClearGallerySelection: function () {
             $('input[name=form_Folder]').val();
             $('#gallery_pictures').html("<div class='align_center'>There are no pictures uploaded.</div>");
-            $('#cover_photo').attr('src', '/assets/images/blank_cover_photo.jpg');
+            $('#cover_photo').attr('src', site_url + 'fuel/modules/gallerymanager/assets/images/blank_cover_photo.jpg');
 
             $('.btnSelectGallery').each(function (index) {
                 var id = $(this).data("groupid");
@@ -57,7 +57,7 @@
             $('input[name=GalleryGroup_Folder]').val('');
             $('input[name=GalleryGroup_Active]').prop('checked', true);
 
-            $('#cover_photo').attr('src', '/assets/images/blank_cover_photo.jpg');
+            $('#cover_photo').attr('src', site_url + 'fuel/modules/gallerymanager/assets/images/blank_cover_photo.jpg');
             $('#gallery_pictures').html('');
             $('#gallery_groups').html('');
         },
@@ -487,8 +487,8 @@
 
         $('#div_upload_form').hide();
         $('#div_upload_thumb').show();
-        $('#upload_image').attr('src', '/tempupload/' + jsonObj.resize_path);
-        $('#preview_thumb').attr('src', '/tempupload/' + jsonObj.resize_path);
+        $('#upload_image').attr('src', site_url + '/tempupload/' + jsonObj.resize_path);
+        $('#preview_thumb').attr('src', site_url + '/tempupload/' + jsonObj.resize_path);
         $('#upload_image').show();
         $('#preview_thumb').show();
         $('#file_name').val(jsonObj.file_name);

@@ -42,11 +42,11 @@
 </div>
 
 <div style="display: none;">
-    <img src="/assets/images/is_valid.gif" alt="Folder Status" />
-    <img src="/assets/images/not_valid.gif" alt="Folder Status" />
+    <img src="<?php echo site_url();?>/fuel/modules/gallerymanager/assets/images/is_valid.gif" alt="Folder Status" />
+    <img src="<?php echo site_url();?>/fuel/modules/gallerymanager/assets/images/not_valid.gif" alt="Folder Status" />
 </div>
 
-    <script src="/fuel/modules/gallerymanager/assets/js/jquery.typewatch.js" type="text/javascript"></script>
+    <script src="<?php echo site_url();?>/fuel/modules/gallerymanager/assets/js/jquery.typewatch.js" type="text/javascript"></script>
     <script type="text/javascript">
         var ajax_folder = null;
 
@@ -79,13 +79,13 @@
                         GroupFolder.removeClass('input_error');
                         GroupFolder.addClass('input_valid');
                         $('input[name=FolderStatus]').val("1")
-                        $('#folder_status').html('<img src="/fuel/modules/gallerymanager/assets/images/is_valid.gif" alt="Folder Status" />');
+                        $('#folder_status').html('<img src="<?php echo site_url();?>/fuel/modules/gallerymanager/assets/images/is_valid.gif" alt="Folder Status" />');
                         ClearScreen();
                     } else {
                         GroupFolder.removeClass('input_valid');
                         GroupFolder.addClass('input_error');
                         $('input[name=FolderStatus]').val("0");
-                        $('#folder_status').html('<img src="/fuel/modules/gallerymanager/assets/images/not_valid.gif" alt="Folder Status" />');
+                        $('#folder_status').html('<img src="<?php echo site_url();?>/fuel/modules/gallerymanager/assets/images/not_valid.gif" alt="Folder Status" />');
                         $('#message_add_group').addClass("error_message");
                         $('#message_add_group').html(jsonData.Message);
                     }

@@ -37,7 +37,7 @@
                     <p><label>Title:</label> <input type="text" name="GalleryGroup_Title" /></p>
                     <p><label>Active:</label> <input type="checkbox" name="GalleryGroup_Active" checked /></p>                    
                 </div>
-                <div class="float_left" style="width: 250px; text-align: center;"><img src="/assets/images/blank_cover_photo.jpg" id="cover_photo" class="cover_photo" width="250" height="180" alt="Cover Photo" /></div>
+                <div class="float_left" style="width: 250px; text-align: center;"><img src="<?php echo site_url();?>/fuel/modules/gallerymanager/assets/images/blank_cover_photo.jpg" id="cover_photo" class="cover_photo" width="250" height="180" alt="Cover Photo" /></div>
                 <div class="clear_10"></div>                    
 	            <div class="buttonbar">
 		            <ul>
@@ -89,7 +89,7 @@
             <div id="div_upload_thumb" style="width: 250px; float: left; text-align: right; display: none; padding: 0 0 0 10px;">
                 <div id="preview-pane">
                     <div class="preview-container">
-                        <img id="preview_thumb" class="jcrop-preview" alt="Preview" src="/assets/images/blank_photo.jpg" />
+                        <img id="preview_thumb" class="jcrop-preview" alt="Preview" src="<?php echo site_url();?>/fuel/modules/gallerymanager/assets/images/blank_photo.jpg" />
                     </div>
                 </div>
                 <div style="padding: 10px 0 0 0;">
@@ -139,13 +139,15 @@
     
          	            
 </div>
-
-    <link href="/fuel/modules/gallerymanager/assets/fancybox/jquery.fancybox.css" media="all" rel="stylesheet"/>
-    <script src="/fuel/modules/gallerymanager/assets/fancybox/jquery.fancybox.js" type="text/javascript"></script>
+	<script>
+		var site_url= "<?php echo site_url();?>"; 
+	</script>
+    <link href="<?php echo site_url();?>/fuel/modules/gallerymanager/assets/fancybox/jquery.fancybox.css" media="all" rel="stylesheet"/>
+    <script src="<?php echo site_url();?>/fuel/modules/gallerymanager/assets/fancybox/jquery.fancybox.js" type="text/javascript"></script>
     
-    <link href="/fuel/modules/gallerymanager/assets/css/jquery.Jcrop.css" media="all" rel="stylesheet"/>
-    <script src="/fuel/modules/gallerymanager/assets/js/jquery.Jcrop.js" type="text/javascript"></script>
+    <link href="<?php echo site_url();?>/fuel/modules/gallerymanager/assets/css/jquery.Jcrop.css" media="all" rel="stylesheet"/>
+    <script src="<?php echo site_url();?>/fuel/modules/gallerymanager/assets/js/jquery.Jcrop.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="/fuel/modules/gallerymanager/assets/js/gallerymanager.js"></script>       
+    <script type="text/javascript" src="<?php echo site_url();?>/fuel/modules/gallerymanager/assets/js/gallerymanager.js"></script>       
 
     

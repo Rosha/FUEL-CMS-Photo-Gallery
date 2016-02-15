@@ -389,7 +389,7 @@ class gallerymanager extends Fuel_base_controller
 
         $Photo = array();
         $Photo = $this->Gallery_model->GetPicture($PhotoID);      
-
+		
         $return = array(
             "Status"        => "1",
             "PhotoID"       => $Photo[0]->PictureID,
@@ -413,12 +413,12 @@ class gallerymanager extends Fuel_base_controller
             foreach($dataGroup as $Gallery) {
                 if ($Gallery->PictureThumb != '') {
                     $photo_count++;
-                    $PhotoPath = '/assets/gallerymanager/'.$Gallery->GalleryFolder.'/'.$Gallery->Folder.'/'.$Gallery->PictureThumb;
+                    $PhotoPath = site_url().'/assets/gallerymanager/'.$Gallery->GalleryFolder.'/'.$Gallery->Folder.'/'.$Gallery->PictureThumb;
 
                     $html .= '<li data-pictureid="' . $Gallery->PictureID . '">';
                     $html .= '<div class="gallery_picture">';
                     $html .= '<div class="ajax_overlay ajax_photo"></div>';
-                    $html .= '<div class="photo_reorder grab handle"><img src="/fuel/modules/' . GALLERYMANAGER_FOLDER . '/assets/images/icon_drag_drop.png" /></div>';
+                    $html .= '<div class="photo_reorder grab handle"><img src="'.site_url().'/fuel/modules/' . GALLERYMANAGER_FOLDER . '/assets/images/icon_drag_drop.png" /></div>';
                     $html .= '<div class="photo_delete"><button data-pictureid="' . $Gallery->PictureID . '" aria-hidden="true" data-groupid="' . $Gallery->GroupID . '" data-dismiss="alert" class="close delete_photo" type="button">×</button></div>';
                     $html .= '<div class="photo"><a class="edit_photo" PhotoID="' . $Gallery->PictureID . '" PhotoPath="' . $PhotoPath . '" rel="' . $Gallery->Folder . '" href="javascript:void(0);"><img src="' . $PhotoPath . '" /></a></div>';
                     $html .= '<div class="commands">' . $Gallery->PictureTitle . '<br><a href="javascript:void(0);" data-pictureid="' . $Gallery->PictureID . '" class="make_cover_photo">Make Cover Photo</a></div>';
@@ -721,12 +721,13 @@ class gallerymanager extends Fuel_base_controller
                 mkdir('./assets/' . GALLERYMANAGER_FOLDER . '/'.strtolower($GalleryGroup[0]->GalleryFolder.'/'.$GalleryGroup[0]->Folder), 0777);
             }
 
-            $full_path = strtolower('./assets/' . GALLERYMANAGER_FOLDER . '/'.$GalleryGroup[0]->GalleryFolder.'/'.$GalleryGroup[0]->Folder.'/');
+            $full_path = strtolower('./assets/gallerymanager/' . '/'.$GalleryGroup[0]->GalleryFolder.'/'.$GalleryGroup[0]->Folder.'/');
             
             //$this->firephp->log('Copy Path: ' . $full_path);
-
-            copy('./tempupload/'.$FileName,     $full_path.$ImgFileName);
-            copy('./tempupload/'.$ImgThumbName, $full_path.$ImgThumbName);
+			$tmp_path = WEB_ROOT. '/tempupload';
+			
+            copy($tmp_path.'/'.$FileName,     $full_path.$ImgFileName);
+            copy($tmp_path.'/'.$ImgThumbName, $full_path.$ImgThumbName);
 
             if (file_exists('./tempupload/'.$FileName))                 { unlink('./tempupload/'.$FileName); }
             if (file_exists('./tempupload/'.$ImgResizeName))            { unlink('./tempupload/'.$ImgResizeName); }
@@ -763,15 +764,19 @@ class gallerymanager extends Fuel_base_controller
         // delete file
         try {
             $path = './assets/' . GALLERYMANAGER_FOLDER . '/' . $Photo[0]->GalleryFolder . '/'.$Photo[0]->Folder.'/';
-
-            if (!@unlink(strtolower($path.$Photo[0]->PictureSRC))) {
-                echo "Could not delete: " . $path.$Photo[0]->PictureSRC . "<br>";
+			
+			if(file_exists(strtolower($path.$Photo[0]->PictureSRC)))
+			{
+				if (!@unlink(strtolower($path.$Photo[0]->PictureSRC))) {
+					echo "Could not delete: " . $path.$Photo[0]->PictureSRC . "<br>";
+				}
+			}
+			if(file_exists(strtolower($path.$Photo[0]->PictureThumb)))
+			{
+				if (!@unlink(strtolower($path.$Photo[0]->PictureThumb))) {
+					echo "Could not delete: " . $path.$Photo[0]->PictureThumb . "<br>";
+				}
             }
-
-            if (!@unlink(strtolower($path.$Photo[0]->PictureThumb))) {
-                echo "Could not delete: " . $path.$Photo[0]->PictureThumb . "<br>";
-            }
-            
             $return = array(
                 "Status" => "1"
             );
